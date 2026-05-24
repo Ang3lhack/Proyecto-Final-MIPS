@@ -41,28 +41,30 @@ El código fuente está estrictamente modularizado, siguiendo las mejores práct
  ┃ ┣ 📜 Mem.v                # Memoria de Datos (RAM)
  ┃ ┣ 📜 InstructionMemory.v  # Memoria de Instrucciones (ROM)
  ┃ ┣ 📜 Mux2_1_32.v          # Multiplexores
- ┃ ┗ 📜 soporte.v            # Adder, SignExtend, ShiftLeft2                  # Archivos de simulación
+ ┃ ┗ 📜 soporte.v            # Adder, SignExtend, ShiftLeft2
+ ┣ 📂 tests                  # Archivos de simulación
  ┃ ┣ 📜 TB_DPTR.v            # Testbench Principal
  ┃ ┣ 📜 TestAlgoritmo.mem    # Código máquina de Raíz Cuadrada
  ┃ ┗ 📜 TestF3_MemInst.mem   # Código máquina de Validación (Profesor)
  ┣ 📂 scr                    # Ensamblador automatizado
  ┃ ┣ 📜 mips_assembler.py    # Script en Python para traducir .asm a .mem
  ┃ ┗ 📜 raiz_cuadrada_j.asm  # Código fuente en ensamblador
- ┗ 📜 README.md              # Documentación
  ┣ 📂 Docs                   # Reportes
  ┃ ┣ 📜 Fase1.pdf 
- ┃ ┗ 📜 Fase2.pdf
+ ┃ ┣ 📜 Fase2.pdf
  ┃ ┗ 📜 Fase3.pdf
+ ┗ 📜 README.md              # Documentación
+```
+
 ---
 
-# 🚀 Algoritmos de Validación
+## 🚀 Algoritmos de Validación
 
-## 🔢 Cálculo de Raíz Cuadrada (Matemática Pura)
+### 🔢 Cálculo de Raíz Cuadrada (Matemática Pura)
 
 Algoritmo iterativo diseñado en ensamblador que calcula la raíz cuadrada exacta de un número mediante resta sucesiva de números impares.
 
-### Características evaluadas
-
+**Características evaluadas:**
 - Uso de subrutinas (`JAL` / `$ra`)
 - Bucles infinitos (`J`)
 - Manipulación de registros
@@ -70,10 +72,9 @@ Algoritmo iterativo diseñado en ensamblador que calcula la raíz cuadrada exact
 
 ---
 
-## 🧩 Obstacle Course (Control de Flujo)
+### 🧩 Obstacle Course (Control de Flujo)
 
 Código de estrés diseñado para validar el correcto funcionamiento de:
-
 - Saltos condicionales (`BEQ`)
 - Saltos absolutos (`J`)
 - Direccionamiento de Branch Target
@@ -82,111 +83,58 @@ Código de estrés diseñado para validar el correcto funcionamiento de:
 
 ---
 
-# 🛠️ Herramientas y Requisitos
+## 🛠️ Herramientas y Requisitos
 
 | Herramienta | Uso |
-|---|---|
+| :--- | :--- |
 | **ModelSim** | Simulación y validación del hardware |
 | **Verilog HDL** | Diseño RTL del procesador |
 | **Python 3.x** | Assembler personalizado (.asm → .mem) |
 
-### Requisitos recomendados
-
+**Requisitos recomendados:**
 - ModelSim Intel FPGA Starter Edition 10.5b o superior
 - Python 3.x instalado
 - Editor HDL (VSCode, Quartus, etc.)
 
 ---
 
-# ⚙️ Cómo Simular el Procesador
+## ⚙️ Cómo Simular el Procesador
 
-## 1️⃣ Clonar el repositorio
-
+### 1️⃣ Clonar el repositorio
 ```bash
-git clone https://github.com/Ang3lhack/Proyecto-Final-MIPS.git
+git clone [https://github.com/Ang3lhack/Proyecto-Final-MIPS.git](https://github.com/Ang3lhack/Proyecto-Final-MIPS.git)
 ```
 
----
-
-## 2️⃣ Abrir ModelSim
-
+### 2️⃣ Abrir ModelSim
 Crear un nuevo proyecto y agregar:
-
 - Todos los archivos `.v` de `RTL/`
 - Todos los archivos `.v` y `.mem` de `tests/`
 
----
-
-## 3️⃣ Configurar memoria de instrucciones
-
-Abrir el archivo:
-
-```text
-InstructionMemory.v
-```
-
-Modificar la ruta absoluta del archivo `.mem` que deseas ejecutar.
-
-Ejemplo:
-
+### 3️⃣ Configurar memoria de instrucciones
+Abrir el archivo `InstructionMemory.v` y modificar la ruta absoluta del archivo `.mem` que deseas ejecutar. Ejemplo:
 ```text
 TestAlgoritmo.mem
 ```
 
----
+### 4️⃣ Compilar el proyecto
+En ModelSim ve a: `Compile → Compile All`
 
-## 4️⃣ Compilar el proyecto
-
-En ModelSim:
-
-```text
-Compile → Compile All
-```
-
----
-
-## 5️⃣ Ejecutar simulación
-
-Seleccionar el módulo:
-
-```text
-TB_DPTR
-```
-
-En la ventana **Transcript** ejecutar:
-
+### 5️⃣ Ejecutar simulación
+Seleccionar el módulo `TB_DPTR`. En la ventana **Transcript** ejecutar:
 ```text
 run -all
 ```
 
----
-
-## 6️⃣ Visualizar señales
-
-Utilizar:
-
-```text
-Wave → Zoom Full
-```
-
-### Recomendaciones
-
-- Cambiar `pc_out` a formato **Unsigned**
-- Cambiar la instrucción a formato **Hexadecimal**
+### 6️⃣ Visualizar señales
+Utilizar la herramienta `Wave → Zoom Full`.
+> **Recomendaciones:** Cambiar la señal `pc_out` a formato **Unsigned** y la señal `instruction` a formato **Hexadecimal** para facilitar la lectura.
 
 ---
 
-# 👨‍💻 Autores
+## 👨‍💻 Autores
 
-## Angel Gael García Ramos
-## Andrea Valeria Torres Figueroa
-## Estefania Navarro Mendoza
+- **Angel Gael García Ramos** - [@Ang3lhack](https://github.com/Ang3lhack)
+- **Andrea Valeria Torres Figueroa** - [@andreatorres4898](https://github.com/andreatorres4898)
+- **Estefania Navarro Mendoza** - [@fanny-nav](https://github.com/fanny-nav)
 
-**Estudiantes de Ingeniería en Computación**  
-Universidad de Guadalajara (CUCEI)
-
-### GitHub
-
-[@Ang3lhack](https://github.com/Ang3lhack)
-[@andreatorres4898](https://github.com/andreatorres4898)
-[@fanny-nav](https://github.com/fanny-nav)
+**Estudiantes de Ingeniería en Computación** Universidad de Guadalajara (CUCEI)
