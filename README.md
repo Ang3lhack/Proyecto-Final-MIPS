@@ -42,7 +42,6 @@ El código fuente está estrictamente modularizado, siguiendo las mejores práct
  ┃ ┣ 📜 InstructionMemory.v  # Memoria de Instrucciones (ROM)
  ┃ ┣ 📜 Mux2_1_32.v          # Multiplexores
  ┃ ┗ 📜 soporte.v            # Adder, SignExtend, ShiftLeft2
- ┣ 📂 tests                  # Archivos de simulación
  ┃ ┣ 📜 TB_DPTR.v            # Testbench Principal
  ┃ ┣ 📜 TestAlgoritmo.mem    # Código máquina de Raíz Cuadrada
  ┃ ┗ 📜 TestF3_MemInst.mem   # Código máquina de Validación (Profesor)
